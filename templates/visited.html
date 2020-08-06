@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Recipes</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{{url_for('static', filename = 'vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{{url_for('static', filename = 'css/style.css')}}" rel="stylesheet">
+
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+
+</head>
+
+<body>
+
+  
+
+  <!-- Page Content -->
+  <div class="container">
+  <header  class="header" style="margin-top: 15px;">
+   <h1 class="logo"><a href="{{url_for('home')}}" style="text-decoration: none;">Recepie Box</a></h1>
+      <ul class="main-nav">
+          <li><a href="{{url_for('home')}}" style="text-decoration: none;">Home</a></li>
+          <li><a href="{{url_for('custom_recepie')}}" style="text-decoration: none;">Add Recepie</a></li>
+          <li><a href="{{url_for('visited')}}" style="text-decoration: none;">Visited / Favourite</a></li>
+          <!-- <li><a href="#">About Us</a></li> -->
+      </ul>
+    </header>
+        
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4" style="background: url({{url_for('static',filename='bg.jpg')}}); background-repeat: no-repeat;background-size:cover;">
+      <div class="row">
+        <div class="col-md-8 form-recipe">
+          <span class="head-span">Recipes </span>
+          
+
+          <div class="row">
+            <div class="form-container">
+                
+              <span class="text-success">With</span>
+              <!-- <span class="text-danger">Without</span> -->
+            </div>
+            <div class="form-suggestion">
+              <div class="form">
+                <input placeholder="Search Ingredients" onkeyup="liveSearch(this.value)"/>
+                <div id="results"></div>
+              </div>
+    
+              
+              <ul class="suggestion-list" id="searchresult">
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-md-4 selected-ingredients">
+          <b>With</b>
+          <ul id="list">
+           
+          </ul>
+          <hr />
+          <p id='totalrecepie'></p>
+
+        </div>
+
+      </div>
+    </header>
+    
+
+    <!-- Page Features -->
+    <div class="row text-center" id='sections'>
+
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{url_for('static', filename = 'vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename = 'vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  <script type="text/javascript">
+       function liveSearch(value){
+          value = value.trim(); 
+         
+          $.ajax({
+            url: "/data/",
+            data: {searchText: value},
+            dataType: "json",
+            type:'POST',
+            success: function(data){
+              
+              var res = "";
+              // create the html with results
+              for(i in data[0].slice(0,4)){
+                
+                
+                res += "<li class='"+data[0][i]+"'" +" onclick='add_selected(this.textContent)'>"+data[0][i]+"<i class='fa fa-plus float-right'></i></li>";
+                
+               $("#searchresult").html(res);
+              }
+              
+              
+            }
+
+          });
+        
+        
+      }
+
+      
+
+      function livechange(value){
+        value = value.trim();
+        value = value.replace(/(\r\n|\n|\r)/gm,"");
+       
+          
+
+          $.ajax({
+            url: "/visited_data/",
+            data: {ingredients: value},
+            dataType: "json",
+            type:'POST',
+            success: function(data){
+
+              try{
+                if (data[3]!=undefined){
+                  
+                  document.getElementById('totalrecepie').innerHTML ='Total Recepie Found: '+ data[3];
+                }
+                else{
+                   
+                    document.getElementById('totalrecepie').innerHTML ='';
+                }
+              }
+              catch (err){  
+                  
+                   document.getElementById('totalrecepie').innerHTML ='';
+              }
+         
+              var res = "";
+              // create the html with results
+              for(i in data[0]){
+              
+             
+               url = data[2][i]
+              
+                res += `<div class="col-lg-3 col-md-6 mb-4 recipe">
+                              <a `+data[2][i]+`>
+                                <div class="card h-100">
+                                  <div class="card-body recipe-image" style="background-image: url(`+data[1][i]+`);">
+                        
+                                  </div>
+                                  <div class="card-footer">
+                                    <span>`+data[0][i]+`</span>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>`;
+                
+               $("#sections").html(res);
+              }
+              
+              
+            }
+
+          });
+        
+        
+      }
+
+      livechange('');
+
+
+      
+
+
+
+
+      function add_selected(value){
+         value = value.trim();
+        value = value.replace(/(\r\n|\n|\r)/gm,"");
+
+
+        var el = document.getElementById('list');
+        var node = document.createElement("li");
+        var link = document.createElement('i');
+        node.setAttribute('id',value)
+        link.setAttribute('class', 'fa fa-close text-danger');
+        node.setAttribute('onclick', 'remove_selected(this.id)')
+        node.innerHTML =  '✔'+value;
+        node.appendChild(link);
+        el.appendChild(node);
+   
+        x= document.getElementsByClassName(value);
+        
+        try{x[0].style.display='none';}
+        catch (err){}
+        
+
+        livechange($('#list').text());       
+        
+      }
+
+      function remove_selected(value){
+          
+         y = document.getElementsByClassName(value);
+         
+         try{
+           y[0].style.display='block';
+         }
+         catch (err){}
+           x =  "[id='"+value+"']"
+           
+            
+            $(x).remove();
+          livechange($('#list').text());    
+         
+        }
+
+      
+
+  </script>
+
+  <style type="text/css">
+    body{
+      background-color: azure;
+    }
+    * {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+h2,
+h3,
+a {
+  color: #34495e;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+.logo {
+  margin: 0;
+  font-size: 1.45em;
+}
+
+.main-nav {
+  margin-top: 5px;
+
+}
+.logo a,
+.main-nav a {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+}
+
+.main-nav a {
+  color: #34495e;
+  font-size: .99em;
+}
+
+.main-nav a:hover {
+  color: #718daa;
+}
+
+
+
+.header {
+  padding-top: .5em;
+  padding-bottom: .5em;
+  border: 1px solid #a2a2a2;
+  background-color: #f4f4f4;
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+
+/* ================================= 
+  Media Queries
+==================================== */
+
+
+
+
+@media (min-width: 769px) {
+  .header,
+  .main-nav {
+    display: flex;
+  }
+  .header {
+    flex-direction: column;
+    align-items: center;
+      .header{
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1150px;
+  }
+  }
+
+}
+
+@media (min-width: 1025px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+}
+
+  </style>
+
+</body>
+
+</html>

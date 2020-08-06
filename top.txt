@@ -1,0 +1,12 @@
+beef	https://previews.123rf.com/images/seamartini/seamartini1501/seamartini150100326/35757211-roast-beef-with-slices-and-text-beef-in-cartoon-retro-style-suitable-for-steak-house-menu-or-recipe-.jpg
+chicken	https://previews.123rf.com/images/memoangeles/memoangeles1410/memoangeles141000013/32555963-cartoon-chicken-illustration.jpg
+pork	https://previews.123rf.com/images/marina99/marina991311/marina99131100180/23350253-cartoon-fried-pig-on-a-plate.jpg
+egg	https://previews.123rf.com/images/lineartestpilot/lineartestpilot1802/lineartestpilot180203446/94700743-cartoon-egg-yolk.jpg
+cheese	https://previews.123rf.com/images/lineartestpilot/lineartestpilot1603/lineartestpilot160334508/53900625-freehand-textured-cartoon-cheese.jpg
+broccoli	https://previews.123rf.com/images/larryrains/larryrains1605/larryrains160500436/57291253-broccoli-cartoon.jpg
+potato	https://previews.123rf.com/images/chudtsankov/chudtsankov1507/chudtsankov150700025/43447137-happy-potato-cartoon-character-waving.jpg
+onion	https://previews.123rf.com/images/aliasching/aliasching1409/aliasching140900110/31818283-cartoon-onion.jpg
+flour	https://previews.123rf.com/images/lineartestpilot/lineartestpilot1402/lineartestpilot140203461/25610258-cartoon-bag-of-flour.jpg
+garlic	https://previews.123rf.com/images/kongvector/kongvector1707/kongvector170700745/81796334-tongue-out-garlic-cartoon-character.jpg
+pepper	https://previews.123rf.com/images/yayayoy/yayayoy1109/yayayoy110900018/10602002-red-hot-chili-pepper-cartoon.jpg
+honey	https://previews.123rf.com/images/jumpingxiii/jumpingxiii1810/jumpingxiii181000030/109854686-honey-jar-cartoon-vector-bee-cartoon-free-space-for-text-.jpg

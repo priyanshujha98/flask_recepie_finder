@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+
+	 
+	<label style="margin-left: 40%; color: red;">{{message}}</label>
+<div class="form-wrapper">
+
+  <form method='POST'>
+    <div class="row">
+      <div class="form-col">
+        <div class="form__item" >
+          <label class="recipe__name" style="background: antiquewhite;" for="recipe-name">Recipe Name<i class="red"> ( max length 200 )</i></label>
+          <input name="recipe-name" required style="height: 50px;padding: 10px;font-family: sans-serif;font-weight: bold;" />
+        </div>
+
+        <div class="form__item" >
+          <label class="recipe__name" style="background: antiquewhite;" for="recipe-name">Image Url</label>
+         	 <input name="img-url" required style="height: 10px;padding: 10px;font-family: sans-serif;font-weight: bold;" />
+        </div>
+
+        <div class="form__item">
+          <label for="short-desc" style="background: antiquewhite;">Short Description</label>
+          <textarea name="short-desc" required cols="30" style="height: 150px;padding: 10px" rows="5"></textarea>
+        </div>
+        <div class="form__item">
+          <label for="ing-list" style="background: antiquewhite;">Ingredients</label>
+          <textarea name="ing-list" required cols="30" rows="10" placeholder="Enter like this... &#10;xyz &#10;abc" style="height: 300px;padding: 10px"></textarea>
+        </div>
+      </div>
+      <div class="form-col">
+        <div class="row">
+          <div class="form__item">
+            <label class="recipe__time" style="background: antiquewhite;" for="prep_time">Prep Time</label>
+            <input class="time__input" required name ='prep_time' type="text" style="height: 50px;padding: 10px"/>
+          </div>
+
+          <div class="form__item">
+            <label class="recipe__time" style="background: antiquewhite;">Cooking Time</label>
+            <input class="time__input" type="text" required name="cook_time" style="height: 50px;padding: 10px"/>
+          </div>
+
+          <div class="form__item">
+            <label class="recipe__time" style="background: antiquewhite;">Total Time</label>
+            <input class="time__input" type="text" required name='total_time' style="height: 50px;padding: 10px"/>
+          </div>
+
+          <div class="form__item">
+            <label class="recipe__time" style="background: antiquewhite;" for="servings">Servings</label>
+            <input class="time__input" for="servings" required name="servings" type="text" style="height: 50px;padding: 10px"/>
+          </div>
+        </div>
+        <div class="form__item">
+          <label for="direction" style="background: antiquewhite;">Directions</label>
+          <textarea name="direction" rows="10" required placeholder="Enter like this.... &#10;xyz &#10;abc" style="height: 350px; padding: 10px"></textarea>
+        </div>
+        <div class="form__item">
+
+        	<button type="reset" style="width: 250px;height: 35px;display: inline; border: aliceblue; background: antiquewhite;"> Reset</button>
+         <button type="submit" style="width: 250px;height: 35px;display: inline; margin-top: -33px; margin-left: 350px; border: aliceblue; background: antiquewhite;"> Submit</button><br><br>
+         	<a href="{{url_for('home')}}"> <button style="border: aliceblue;height: 50px;width: 500px;margin-left: 70px; background: antiquewhite; color: white;">Go to Home</button></a>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<style type="text/css">
+	.form-wrapper {
+  padding: 10px;
+}
+
+.row {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+.red{
+  color: red;
+}
+
+.form-col {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-flex: 1;
+          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  max-width: 1120;
+  padding-left: 10px;
+}
+
+.form__item {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  padding-top: 15px;
+  height: 100%;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.time__input {
+  max-width: 100px;
+  margin-right: 25px;
+}
+
+</style>
+
+  <style type="text/css">
+    * {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+h2,
+h3,
+a {
+  color: #34495e;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+
+.logo {
+  margin: 0;
+  font-size: 1.45em;
+}
+
+.main-nav {
+  margin-top: 5px;
+
+}
+.logo a,
+.main-nav a {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+}
+
+.main-nav a {
+  color: #34495e;
+  font-size: .99em;
+}
+
+.main-nav a:hover {
+  color: #718daa;
+}
+
+
+
+.header {
+  padding-top: .5em;
+  padding-bottom: .5em;
+  border: 1px solid #a2a2a2;
+  background-color: #f4f4f4;
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+
+/* ================================= 
+  Media Queries
+==================================== */
+
+
+
+
+@media (min-width: 769px) {
+  .header,
+  .main-nav {
+    display: flex;
+  }
+  .header {
+    flex-direction: column;
+    align-items: center;
+      .header{
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1150px;
+  }
+  }
+
+}
+
+@media (min-width: 1025px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+}
+
+  </style>
+
+</body>
+</html>

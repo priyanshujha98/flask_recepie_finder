@@ -1,0 +1,123 @@
+.form-recipe {
+  font-size: 25px;
+  margin-top: 15px;
+}
+
+
+.head-span {
+  margin-right: 15px;
+  font-weight: 600;
+}
+
+
+.form-recipe .text-success, .form-recipe .text-danger{
+  border-bottom: 1px solid #b6b6b6;
+  border-radius: 10px;
+  padding: 10px 15px;
+  
+}
+
+.form-container {
+  margin-top: 7px;
+  display: block;
+  float: left;
+}
+
+.form-recipe .form-suggestion {
+  display: block;
+  float: left;
+  width: 300px;
+}
+
+.suggestion-list {
+  font-size: 16px;
+  font-weight: 300;
+  list-style: none;
+  padding: 0;
+}
+
+.suggestion-list li {
+  border-bottom: 1px solid #b6b6b6;
+  padding: 10px 20px;
+}
+
+.form-recipe .form {
+  margin-left: 10px;
+  border-bottom: 1px solid #b6b6b6;
+  border-radius: 10px;
+  padding: 10px 15px;
+  font-size: 20px;
+}
+
+
+.form-recipe .form input {
+  background-color: transparent;
+  border: none;
+}
+
+
+.form-recipe .form ::placeholder{
+  color: #9c8c8c;
+  font-weight: 300;
+}
+
+:focus {
+  outline: none;
+}
+
+
+.selected-ingredients {
+  margin-top: 50px;
+}
+
+.selected-ingredients ul {
+  list-style: none;
+  padding: 0;
+}
+
+.selected-ingredients ul li{
+  margin: 5px 0;
+}
+.selected-ingredients ul li i{
+  margin-left: 5px;
+}
+
+.recipe a{
+  text-decoration: none;
+  color: #333;
+}
+
+.recipe .card-footer span {
+  font-weight: 600;
+}
+
+.recipe a:hover{
+  text-decoration: none;
+}
+
+.recipe-image {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 200px;
+}
+
+.single-recipe-header {
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.ingredient-list {
+  list-style: none;
+  padding: 0;
+}
+.ingredient-list li {
+  margin: 10px 0;
+}
+
+
+.direction-list li {
+  margin: 10px 0;
+}
