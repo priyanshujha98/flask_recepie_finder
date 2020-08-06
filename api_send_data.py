@@ -52,7 +52,7 @@ def send_recepies():
     payload = "https://www.jamieoliver.com/recipes/curry-recipes/veggie-korma/"
     headers = {
         'x-rapidapi-host': "mycookbook-io1.p.rapidapi.com",
-        'x-rapidapi-key': "da82fa0637msh1349f7e56ed5543p173437jsn43981e323b74",
+        'x-rapidapi-key': "",
         'content-type': "text/plain",
         'accept': "text/plain"
         }
